@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>K3School Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Box styles */
+        .box {
+            width: 300px;
+            padding: 30px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        input {
+            display: block;
+            width: 90%;
+            margin: 10px auto;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            display: none; /* initially hidden */
+            flex-direction: column;
+            z-index: 9999;
+        }
+
+        /* Spinner animation */
+        .spinner {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>K3School Login</h2>
+
+    <input type="text" id="luser" placeholder="Username">
+    <input type="password" id="lpass" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p>New User? <a href="signup.html">Sign Up</a></p>
+</div>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loading">
+    <div class="spinner"></div>
+    <div>Loading...</div>
+</div>
+
+<script>
+function login() {
+    var user = document.getElementById("luser").value;
+    var pass = document.getElementById("lpass").value;
+
+    var suser = localStorage.getItem("username");
+    var spass = localStorage.getItem("password");
+
+    if (user === suser && pass === spass) {
+        // Show loading overlay
+        document.getElementById("loading").style.display = "flex";
+
+        // Wait 2 seconds, then redirect
+        setTimeout(function() {
+            window.location.href = "home.html";
+        }, 2000);
+    } else {
+        alert("Wrong Username or Password");
+    }
+}
+</script>
+
+</body>
+</html>

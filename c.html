@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>C Language Quiz</title>
+</head>
+<body>
+
+<h2 align="center">C Language Quiz</h2>
+
+<form id="quizForm" onsubmit="return false;">
+
+    <ol>
+        <li>
+            Who is known as the father of C Language?<br>
+            <input type="radio" name="q1" value="1"> Dennis Ritchie<br>
+            <input type="radio" name="q1" value="0"> Bjarne Stroustrup<br>
+            <input type="radio" name="q1" value="0"> James Gosling<br>
+        </li><br>
+
+        <li>
+            Which symbol is used to end a statement in C?<br>
+            <input type="radio" name="q2" value="0"> .<br>
+            <input type="radio" name="q2" value="1"> ;<br>
+            <input type="radio" name="q2" value="0"> :<br>
+        </li><br>
+
+        <li>
+            Which data type stores a single character in C?<br>
+            <input type="radio" name="q3" value="0"> int<br>
+            <input type="radio" name="q3" value="1"> char<br>
+            <input type="radio" name="q3" value="0"> float<br>
+        </li><br>
+
+        <li>
+            Which function prints output in C?<br>
+            <input type="radio" name="q4" value="1"> printf()<br>
+            <input type="radio" name="q4" value="0"> scanf()<br>
+            <input type="radio" name="q4" value="0"> getch()<br>
+        </li><br>
+
+        <li>
+            Which symbol is used to include a library in C?<br>
+            <input type="radio" name="q5" value="1"> #include<br>
+            <input type="radio" name="q5" value="0"> #define<br>
+            <input type="radio" name="q5" value="0"> include()<br>
+        </li>
+    </ol>
+
+    <br>
+
+    <input type="button" value="Submit Quiz" onclick="calculateScore()">
+
+</form>
+
+<hr>
+
+<h3 id="result"></h3>
+
+<script>
+function calculateScore(){
+
+    let score = 0;
+
+    let selected = document.querySelectorAll("input[type='radio']:checked");
+
+    selected.forEach(function(ans){
+        score += parseInt(ans.value);
+    });
+
+    document.getElementById("result").innerHTML =
+        "Your Score: " + score + " / 5";
+
+    localStorage.setItem("cQuizScore", score);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTP Verify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="box">
+    <h2>Enter OTP</h2>
+
+    <input type="text" id="uotp" placeholder="Enter OTP">
+    <button onclick="verify()">Verify</button>
+</div>
+
+<script>
+function verify() {
+    var uotp = document.getElementById("uotp").value;
+    var sotp = localStorage.getItem("otp");
+
+    if (uotp === sotp) {
+        alert("Signup Successful");
+        window.location.href = "index.html";
+    } else {
+        alert("Wrong OTP");
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DSA Quiz</title>
+
+    <script>
+        function checkScore(event) {
+            event.preventDefault();  
+
+            let score = 0;
+
+            let answers = {
+                q1: "Data Structures and Algorithms",
+                q2: "Queue",
+                q3: "Dijkstra's Algorithm",
+                q4: "Stack",
+                q5: "Sorted Array"
+            };
+
+            for (let q in answers) {
+                let selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === answers[q]) {
+                    score++;
+                }
+            }
+
+            document.getElementById("result").innerHTML = 
+                "Your Score: <b>" + score + "/5</b>";
+        }
+    </script>
+</head>
+<body>
+
+<h2 align="center">DSA Quiz</h2>
+
+<form onsubmit="checkScore(event)">
+    <ol>
+        <li>
+            What does DSA stand for?<br>
+            <input type="radio" name="q1" value="Data Science Analysis"> Data Science Analysis<br>
+            <input type="radio" name="q1" value="Data Structures and Algorithms"> Data Structures and Algorithms<br>
+            <input type="radio" name="q1" value="Digital System Architecture"> Digital System Architecture<br>
+        </li><br>
+
+        <li>
+            Which data structure uses FIFO principle?<br>
+            <input type="radio" name="q2" value="Stack"> Stack<br>
+            <input type="radio" name="q2" value="Queue"> Queue<br>
+            <input type="radio" name="q2" value="Tree"> Tree<br>
+        </li><br>
+
+        <li>
+            Which algorithm is used to find shortest path in a graph?<br>
+            <input type="radio" name="q3" value="Dijkstra's Algorithm"> Dijkstra's Algorithm<br>
+            <input type="radio" name="q3" value="Merge Sort"> Merge Sort<br>
+            <input type="radio" name="q3" value="Quick Sort"> Quick Sort<br>
+        </li><br>
+
+        <li>
+            Which data structure is used for recursion?<br>
+            <input type="radio" name="q4" value="Queue"> Queue<br>
+            <input type="radio" name="q4" value="Stack"> Stack<br>
+            <input type="radio" name="q4" value="Linked List"> Linked List<br>
+        </li><br>
+
+        <li>
+            Binary Search works on?<br>
+            <input type="radio" name="q5" value="Sorted Array"> Sorted Array<br>
+            <input type="radio" name="q5" value="Unsorted Array"> Unsorted Array<br>
+            <input type="radio" name="q5" value="Any Array"> Any Array<br>
+        </li>
+    </ol>
+
+    <input type="submit" value="Submit Quiz">
+</form>
+
+<hr>
+
+<h2 id="result"></h2>
+
+</body>
+</html>

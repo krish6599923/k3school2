@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Quiz</title>
+
+    <script>
+        function checkScore(event) {
+            event.preventDefault();  
+
+            let score = 0;
+
+            let answers = {
+                q1: "Guido van Rossum",
+                q2: "8",
+                q3: "All of the above",
+                q4: "#",
+                q5: "input()"
+            };
+
+            for (let q in answers) {
+                let selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === answers[q]) {
+                    score++;
+                }
+            }
+
+            document.getElementById("result").innerHTML = 
+                "Your Score: <b>" + score + "/5</b>";
+        }
+    </script>
+</head>
+<body>
+
+<h2 align="center">Python Quiz</h2>
+
+<form onsubmit="checkScore(event)">
+    <ol>
+        <li>
+            Who developed Python?<br>
+            <input type="radio" name="q1" value="Guido van Rossum"> Guido van Rossum<br>
+            <input type="radio" name="q1" value="Dennis Ritchie"> Dennis Ritchie<br>
+            <input type="radio" name="q1" value="James Gosling"> James Gosling<br>
+        </li><br>
+
+        <li>
+            What is the output of print(2**3)?<br>
+            <input type="radio" name="q2" value="6"> 6<br>
+            <input type="radio" name="q2" value="8"> 8<br>
+            <input type="radio" name="q2" value="9"> 9<br>
+        </li><br>
+
+        <li>
+            Which of these is a Python data type?<br>
+            <input type="radio" name="q3" value="int"> int<br>
+            <input type="radio" name="q3" value="float"> float<br>
+            <input type="radio" name="q3" value="All of the above"> All of the above<br>
+        </li><br>
+
+        <li>
+            How do you start a comment in Python?<br>
+            <input type="radio" name="q4" value="//"> //<br>
+            <input type="radio" name="q4" value="#"> #<br>
+            <input type="radio" name="q4" value="HTML comment"> <!-- --> <br>
+        </li><br>
+
+        <li>
+            Which function is used to get input from the user?<br>
+            <input type="radio" name="q5" value="input()"> input()<br>
+            <input type="radio" name="q5" value="scanf()"> scanf()<br>
+            <input type="radio" name="q5" value="read()"> read()<br>
+        </li>
+    </ol>
+
+    <input type="submit" value="Submit Quiz">
+</form>
+
+<hr>
+
+<h2 id="result"></h2>
+
+</body>
+</html>

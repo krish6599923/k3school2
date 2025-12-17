@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Java Quiz</title>
+
+    <script>
+        function checkScore(event) {
+            event.preventDefault();  
+
+            let score = 0;
+
+            // Correct answers
+            let answers = {
+                q1: "James Gosling",
+                q2: "Object-Oriented",
+                q3: "extends",
+                q4: "main()",
+                q5: "Boolean"
+            };
+
+            for (let q in answers) {
+                let selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === answers[q]) {
+                    score++;
+                }
+            }
+
+            document.getElementById("result").innerHTML =
+                "Your Score: <b>" + score + "/5</b>";
+        }
+    </script>
+</head>
+<body>
+
+<h2 align="center">Java Quiz</h2>
+
+<form onsubmit="checkScore(event)">
+    <ol>
+        <li>
+            Who developed Java?<br>
+            <input type="radio" name="q1" value="James Gosling"> James Gosling<br>
+            <input type="radio" name="q1" value="Bjarne Stroustrup"> Bjarne Stroustrup<br>
+            <input type="radio" name="q1" value="Dennis Ritchie"> Dennis Ritchie<br>
+        </li><br>
+
+        <li>
+            Java is which type of language?<br>
+            <input type="radio" name="q2" value="Procedural"> Procedural<br>
+            <input type="radio" name="q2" value="Object-Oriented"> Object-Oriented<br>
+            <input type="radio" name="q2" value="Both"> Both<br>
+        </li><br>
+
+        <li>
+            Which keyword is used to inherit a class in Java?<br>
+            <input type="radio" name="q3" value="this"> this<br>
+            <input type="radio" name="q3" value="extends"> extends<br>
+            <input type="radio" name="q3" value="implements"> implements<br>
+        </li><br>
+
+        <li>
+            Which method is the entry point of a Java program?<br>
+            <input type="radio" name="q4" value="main()"> main()<br>
+            <input type="radio" name="q4" value="start()"> start()<br>
+            <input type="radio" name="q4" value="init()"> init()<br>
+        </li><br>
+
+        <li>
+            Which of these is not a Java keyword?<br>
+            <input type="radio" name="q5" value="static"> static<br>
+            <input type="radio" name="q5" value="Boolean"> Boolean<br>
+            <input type="radio" name="q5" value="void"> void<br>
+        </li>
+    </ol>
+
+    <input type="submit" value="Submit Quiz">
+</form>
+
+<hr>
+
+<h2 id="result"></h2>
+
+</body>
+</html>

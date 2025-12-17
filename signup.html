@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>K3School Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="box">
+    <h2>Sign Up</h2>
+
+    <input type="text" id="name" placeholder="Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="text" id="user" placeholder="Username">
+    <input type="password" id="pass" placeholder="Password">
+    <input type="password" id="cpass" placeholder="Confirm Password">
+
+    <button onclick="signup()">Sign Up</button>
+</div>
+
+<script>
+function signup() {
+    var pass = document.getElementById("pass").value;
+    var cpass = document.getElementById("cpass").value;
+
+    if (pass !== cpass) {
+        alert("Password not match");
+        return;
+    }
+
+    localStorage.setItem("username", document.getElementById("user").value);
+    localStorage.setItem("password", pass);
+
+    var otp = Math.floor(1000 + Math.random() * 9000);
+    localStorage.setItem("otp", otp);
+
+    alert("Your OTP is: " + otp);
+    window.location.href = "otp.html";
+}
+</script>
+
+</body>
+</html>

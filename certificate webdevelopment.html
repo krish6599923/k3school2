@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>K3School Certificate</title>
+
+<style>
+body{
+    font-family: georgia, serif;
+    background:#f8f8f8;
+}
+
+.certificate{
+    width:80%;
+    margin:auto;
+    padding:40px;
+    border:8px solid #444;
+    background:white;
+    text-align:center;
+    border-radius:10px;
+}
+
+/* student name styling */
+.student-name{
+    font-size:32px;
+    font-weight:bold;
+    border-bottom:2px solid black;
+    display:inline-block;
+    padding:5px 20px;
+    margin-top:10px;
+}
+
+/* dob styling */
+.student-dob{
+    font-size:18px;
+    margin-top:8px;
+    color:#444;
+}
+
+button{
+    padding:12px 20px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    background:darkblue;
+    color:white;
+    cursor:pointer;
+}
+button:hover{
+    background:navy;
+}
+</style>
+
+<script>
+window.onload=function(){
+
+    // load name & dob from signup storage
+    let name = localStorage.getItem("studentName");
+    let dob = localStorage.getItem("studentDOB");
+
+    if(name){
+        document.getElementById("student").innerText=name;
+    }
+
+    if(dob){
+        document.getElementById("dob").innerText=dob;
+    }
+}
+
+function downloadPDF(){
+    window.print();
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="certificate">
+
+    <h1>K3School</h1>
+    <h2>Certificate of Completion</h2>
+
+    <p>This certificate is awarded to</p>
+
+    <!-- student name -->
+    <div id="student" class="student-name"></div>
+
+    <!-- dob -->
+    <div id="dob" class="student-dob"></div>
+
+    <p>for successfully completing the</p>
+
+    <h3><b>Web Development Course</b></h3>
+
+    <br><br>
+
+    <button onclick="downloadPDF()">Download Certificate</button>
+
+</div>
+
+</body>
+</html>
